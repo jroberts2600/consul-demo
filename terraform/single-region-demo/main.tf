@@ -33,7 +33,7 @@ provider "consul" {
 }
 
 resource "consul_prepared_query" "product_service" {
-  depends_on = [module.cluster_main]
+  # depends_on = [module.cluster_main]
 
   datacenter   = module.cluster_main.consul_dc
   name         = "product"
@@ -48,7 +48,7 @@ resource "consul_prepared_query" "product_service" {
 }
 
 resource "consul_keys" "keys" {
-  depends_on = [module.cluster_main]
+  # depends_on = [module.cluster_main]
 
   key {
     path   = "product/run"
