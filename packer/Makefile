@@ -3,7 +3,7 @@ ENCRYPT_CONFIG := files/encrypt.hcl
 # if AMI_PREFIX is changed, new value must be specified in Terraform code
 # 	 using ami_prefix parameter for consul-demo-cluster module
 AMI_PREFIX="consul-demo"
-AMI_OWNER=753646501470
+AMI_OWNER=self
 CONSUL_VER="1.7.3"
 BUILD_DATE := $(shell date +%Y%m%d-%H%M)
 

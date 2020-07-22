@@ -11,6 +11,12 @@ This repo can be used to show Consul service discovery, Consul Connect, intentio
 - Multi Region - located in `terraform/multi-region-demo`
   - demonstrates: service discovery, Consul Connect, intentions and service failover between datacenters using a prepared query
 
+### Branches
+
+- `main` - primary branch - Terraform 0.12.x compatible code
+- `terraform-0.11` - Terraform 0.11 compatible code - for use with TFC/TFE
+  - requires setting TFC/TFE workspace to use Terraform 0.11.14
+
 ### Architecture & Diagrams
 
 - [Simple Three Tier Architecture](./diagrams/1-High-Level-Architecture-sm.png)
@@ -32,11 +38,6 @@ This repo can be used to show Consul service discovery, Consul Connect, intentio
 - AWS account & credentials
 - AWS Route53 Hosted Zone ID
   - Terraform creates FQDNs for instances & load balancers
-- Terraform version support
-  - Terraform CLI 0.11.x - use `master` branch
-  - TFC/TFE - use `master` or `demo` branches
-    - set Terraform version on workspaces to 0.11.14
-  - Terraform CLI > 0.12.4 - use `terraform-0.12` branch
 - Consul Enterprise License (Highly Recommended)
   - If not specified - Consul Enterprise demo-binary will shutdown in 30m
   - After no-license shutdown
@@ -66,7 +67,7 @@ This repo can be used to show Consul service discovery, Consul Connect, intentio
 - Make a copy of the script [reference/setup-tfe-example.sh](.reference/setup-tfe-example.sh) and name it `setup-tfe.sh`
   - populate Variables in script
     - configure TFC/TFE organization
-    - specify your repo and branch
+    - specify your repo and `demo` as branch
     - specify workspaces names for `single-region-demo` and `multi-region-demo`
       - script sets working directory for each workspace
     - configure other variables - see `terraform.auto.tfvars.example` for descriptions
