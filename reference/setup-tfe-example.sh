@@ -35,7 +35,7 @@ CONSUL_ENT_LICENSE=""                 # HIGHLY RECOMMENDED
 
 
 ### INTERNAL VARIABLES
-TF_VER="0.11.14"
+TF_VER="0.12.20"
 SSH_PRI_KEY=$(awk '{printf "%s\\n", $0}' $SSH_PRI_KEY_PATH)
 
 

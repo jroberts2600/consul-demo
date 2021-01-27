@@ -10,8 +10,9 @@
         "type": "{{ env `NODE_TYPE` }}",
         "owner_tag": "rpeteuil@hashicorp.com",
         "ami_prefix": "{{ env `AMI_PREFIX` }}",
-        "proj_suffix_tag": "Q3-2019",
-        "consul_version": "{{ env `CONSUL_VER` }}"
+        "proj_suffix_tag": "Q2-2020",
+        "consul_version": "{{ env `CONSUL_VER` }}",
+        "build_date": "{{ env `BUILD_DATE` }}"
     },
     "builders": [{
             "image_name": "{{ user `ami_prefix` }}-consul-base",
@@ -40,7 +41,7 @@
             },
             "instance_type": "t2.micro",
             "ssh_username": "ubuntu",
-            "ami_name": "{{ user `ami_prefix` }}-consul-base-{{timestamp}}",
+            "ami_name": "{{ user `ami_prefix` }}-consul-base-{{ user `build_date` }}",
             "tags": {
                 "Name": "Consul Demo Ubuntu Consul Base",
                 "owner": "{{ user `owner_tag` }}",
@@ -49,8 +50,7 @@
                 "Base_AMI": "{{ .SourceAMI }}",
                 "consul_version": "{{ user `consul_version` }}",
                 "role": "{{ user `role` }}"
-            },
-            "ami_groups": ["all"]
+            }
         }
     ],
     "provisioners": [{
@@ -62,6 +62,16 @@
                 "echo 'APT::Periodic::Update-Package-Lists \"0\";' | sudo tee -a /etc/apt/apt.conf.d/99noperiodic",
                 "echo 'APT::Periodic::Unattended-Upgrade \"0\";' | sudo tee -a /etc/apt/apt.conf.d/99noperiodic",
                 "sudo rm /usr/lib/apt/apt.systemd.daily"
+            ]
+        },
+        {
+            "type": "shell",
+            "inline": [
+                "sudo rm -f /etc/update-motd.d/10-help-text",
+                "sudo rm -f /etc/update-motd.d/50-motd-news",
+                "sudo rm -f /etc/update-motd.d/90-updates-available",
+                "sudo rm -f /etc/update-motd.d/91-release-upgrade",
+                "sudo rm -f /etc/update-motd.d/92-unattended-upgrades"
             ]
         },
         {

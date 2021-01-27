@@ -14,9 +14,9 @@ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongod
 sleep 5
 
 echo "### apt-get update"
-sudo DEBIAN_FRONTEND=noninteractive apt-get update -qq -y > /dev/null
+sudo DEBIAN_FRONTEND=noninteractive apt-get update -qq -y
 sleep 5
-sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq mongodb-org > /dev/null
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq mongodb-org
 sleep 5
 
 sudo systemctl enable mongod

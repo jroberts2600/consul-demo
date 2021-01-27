@@ -10,9 +10,9 @@ variable "hashi_tags" {
   description = "Tags to apply to resources"
 
   default = {
-    "TTL"     = ""
-    "owner"   = ""
-    "project" = ""
+    "TTL"     = "24"
+    "owner"   = "HashiCorpDemo"
+    "project" = "ConsulDemo001"
   }
 }
 
@@ -61,6 +61,11 @@ variable "aws_region_alt" {
 variable "consul_dc_alt" {
   description = "Alternate Consul cluster DC name"
   default     = "dc2"
+}
+
+variable "ami_owner" {
+  description = "AWS account which owns AMIs"
+  default     = "self"
 }
 
 variable "ami_prefix" {

@@ -10,9 +10,10 @@
         "ami_owner": "{{ env `AMI_OWNER` }}",
         "ami_prefix": "{{ env `AMI_PREFIX` }}",
         "owner_tag": "rpeteuil@hashicorp.com",
-        "proj_suffix_tag": "Q3-2019",
+        "proj_suffix_tag": "Q2-2020",
         "type": "{{ env `NODE_TYPE` }}",
-        "consul_version": "{{ env `CONSUL_VER` }}"
+        "consul_version": "{{ env `CONSUL_VER` }}",
+        "build_date": "{{ env `BUILD_DATE` }}"
     },
     "builders": [{
             "image_name": "{{ user `ami_prefix` }}-consul-client",
@@ -41,7 +42,7 @@
             },
             "instance_type": "t2.micro",
             "ssh_username": "ubuntu",
-            "ami_name": "{{ user `ami_prefix` }}-consul-client-{{timestamp}}",
+            "ami_name": "{{ user `ami_prefix` }}-consul-client-{{ user `build_date` }}",
             "tags": {
                 "Name": "Consul Demo Ubuntu Consul Client",
                 "owner": "{{ user `owner_tag` }}",
@@ -50,8 +51,7 @@
                 "Base_AMI": "{{ .SourceAMI }}",
                 "consul_version": "{{ user `consul_version` }}",
                 "role": "{{ user `role` }}"
-            },
-            "ami_groups": ["all"]
+            }
         }
     ],
     "provisioners": [{

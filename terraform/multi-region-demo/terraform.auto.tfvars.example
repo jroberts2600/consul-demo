@@ -54,5 +54,8 @@ ssh_pri_key_file = "~/.ssh/id_rsa"
 # aws_region_alt = "us-east-1"
 # consul_dc_alt  = "dc2"
 
+# Account of AMI (defaults to self)
+# ami_owner = "self"
+
 # AMI prefix name - set if custom AMI's created
 # ami_prefix = "consul-demo"

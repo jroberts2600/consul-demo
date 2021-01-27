@@ -1,10 +1,11 @@
 # Required
 variable "project_name" {
+  type        = string
   description = "Project Name - used to set unique resource names"
 }
 
 variable "hashi_tags" {
-  type = "map"
+  type = map(string)
   description = "Tags to apply to resources" 
 
   default = {
@@ -50,7 +51,7 @@ variable "consul_acl_dc" {
 
 variable "ami_owner" {
   description = "AWS account which owns AMIs"
-  default     = "753646501470"                # hc-sc-demos-2018
+  default     = "753646501470" # hc-sc-demos-2018
 }
 
 variable "ami_prefix" {
@@ -63,14 +64,14 @@ variable "server_machine_type" {
   default     = "t2.micro"
 }
 
-variable "client_machine_type" {
-  description = "The machine type (size) to deploy"
-  default     = "t2.micro"
-}
-
 variable "consul_servers_count" {
   description = "How many Consul servers to create in each region"
   default     = "3"
+}
+
+variable "client_machine_type" {
+  description = "The machine type (size) to deploy"
+  default     = "t2.micro"
 }
 
 variable "client_db_count" {
